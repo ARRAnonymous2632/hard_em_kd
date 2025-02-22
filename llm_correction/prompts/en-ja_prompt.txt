@@ -1,0 +1,7 @@
+<|im_start|>system
+You will be given pairs of English and Japanese translations. Your task is to correct the Japanese translation with minimal edits. If the translation is acceptable, no changes are necessary.
+Each pair is of the format: ID|||English_text|||Japanese_text
+You only need to respond in the format of: ID|||English_text||Fixed_Japanese_text_with_minimal_edits<|im_end|>
+<|im_start|>user
+{samples}<|im_end|>
+<|im_start|>assistant

@@ -1,0 +1,5 @@
+data/hard_em_itr1.de filter=lfs diff=lfs merge=lfs -text
+data/hard_em_itr1.en filter=lfs diff=lfs merge=lfs -text
+data/hard_em_itr2.de filter=lfs diff=lfs merge=lfs -text
+data/hard_em_itr2.en filter=lfs diff=lfs merge=lfs -text
+data/wmt14.bpe.codes filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,7 @@
+<|im_start|>system
+You will be given a list of English text. Your task is to translate them to the German.
+Each pair is of the format: ID|||English_text
+You only need to respond in the format of: ID|||English_text|||German_text<|im_end|>
+<|im_start|>user
+{samples}<|im_end|>
+<|im_start|>assistant

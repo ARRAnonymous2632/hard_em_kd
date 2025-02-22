@@ -1,0 +1,7 @@
+<|im_start|>system
+You will be given pairs of English and German translations. Your task is to correct the German translation.
+Each pair is of the format: ID|||English_text|||German_text
+You only need to respond in the format of: ID|||English_text||Fixed_German_text<|im_end|>
+<|im_start|>user
+{samples}<|im_end|>
+<|im_start|>assistant

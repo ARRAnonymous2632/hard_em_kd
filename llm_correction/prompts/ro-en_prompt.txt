@@ -1,0 +1,7 @@
+<|im_start|>system
+You will be given pairs of Romanian to English translations. Your task is to correct the English translation with minimal edits. If the translation is acceptable, no changes are necessary.
+Each pair is of the format: ID|||Romanian_text|||English_text
+You only need to respond in the format of: ID|||Romanian_text||Fixed_English_text_with_minimal_edits<|im_end|>
+<|im_start|>user
+{samples}<|im_end|>
+<|im_start|>assistant

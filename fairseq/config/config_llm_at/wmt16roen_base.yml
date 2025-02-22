@@ -1,0 +1,82 @@
+data_bin: data-bin/wmt16ro-en_raw_lex_bpe
+tensorboard_logdir: false
+
+# language config
+source_lang: ro
+target_lang: en
+
+arch: transformer_mod_wmt_en_de
+task: translation
+
+ddp_backend: no_c10d
+criterion: label_smoothed_cross_entropy
+label_smoothing: 0.1
+optimizer: adam
+# adam_betas: '"(0.9, 0.98)"'
+lr: 5e-4
+lr_scheduler: inverse_sqrt
+warmup_init_lr: '1e-07'
+stop_min_lr: '1e-09'
+dropout: 0.3
+
+# 2 gpus
+max_tokens: 16384
+update_freq: 1
+
+# left_pad_source: true
+# left_pad_target: true
+
+weight_decay: 0.01
+
+# model hyperparameter
+activation_fn: gelu
+share_all_embeddings: true
+
+# encoder_normalize_before: true
+# decoder_normalize_before: true
+
+# decoder_learned_pos: true
+# encoder_learned_pos: true
+
+# fp16_scale_tolerance: 1.0
+
+# length_control: true
+
+# Train config
+seed: 0
+
+log_format: simple
+log_interval: 100
+
+warmup_updates: 10000
+max_update: 100000
+
+fp16: true
+clip_norm: 0.1
+
+
+keep_best_checkpoints: 5
+# best_checkpoint_metric: loss
+
+validate_interval: 500
+save_interval: 500
+validate_interval_updates: 500
+save_interval_updates: 500
+
+keep_interval_updates: 1
+keep_last_epochs: 1
+keep_best_checkpoints: 5
+
+skip_invalid_size_inputs_valid_test: true
+
+# best_checkpoint_metric: loss
+valid_subset: valid
+ignore_unused_valid_subsets: true
+eval_bleu: true
+eval_bleu_print_samples: true
+eval_bleu_remove_bpe: true
+eval_bleu_detok: space
+eval_tokenized_bleu: true
+best_checkpoint_metric: bleu
+maximize_best_checkpoint_metric: true
+eval_bleu_args: "'{\"beam\": 5, \"max_len_a\": 1.2, \"max_len_b\": 10}'"
