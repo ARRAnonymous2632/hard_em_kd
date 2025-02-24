@@ -1,13 +1,11 @@
 Implementation of "Alleviating the Multimodality Issue in Autoregressive Machine Translation: A Hard-EM Learning Framework"
-
 In this repo, 
 1. `fairseq` contains the script for Transformer-based sequence-to-sequence training.
 2. `llm_correction` shows how we prompt QWen 2.5 to correct the translations.
 3. `data` has the following data files: 
   - `hard_em_itr1.en` `hard_em_itr1.de`
   - `hard_em_itr2.en` `hard_em_itr2.de`
-  - `bpe.code` 
-
+  - `wmt14.bpe.codes` 
 # Instruction
 ## Fairseq Training 
 1. Follow `fairseq/new_setup.py` for installing the environment.
@@ -23,7 +21,6 @@ bash trainer_with_config.sh config/config_llm_at/wmt14ende_raw_base.yml
 bash eval_at.sh [your_checkpoint_path]
 ```
 To gather model's generation over the training sets, an example script can be found at: `fairseq/datasets/wmt14_en_de_kd/s5_kd.sh`
-
 ## LLM Inference
 Given parall files of source.txt, hypothesis.txt, and target.txt, 
 Under `llm_correction` run 
@@ -33,6 +30,10 @@ prompt=$1  \
 hypos=$2 \
 targets=$3 \
 sources=$4 \
-EXPERIMENT_DIR=$5
+EXPERIMENT_DIR=$5 \
+seed=$6
 ```
 where `prompt` is given in `llm_correction/prompts`, and is explained in the appendix of our paper.
+*Additional details:*
+  1. For the analysis of $\lambda$ (Table 6), seeds 37, 42, and 97 are used in the vllm framework (argument of `entry_point_qwen.sh` ) to prompt different corrections, 
+  2. Levenshtein distance (edit distance) is used as the distance measure $d$ between model's generation and correction.
